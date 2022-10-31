@@ -1,0 +1,216 @@
+---
+title: "Lab 5"
+author: "Anagha Sikha"
+format: 
+  html:
+    code-fold: true
+    theme: minty
+editor: visual
+execute: 
+  echo: true
+  error: false
+---
+
+### Set up
+
+```{r setup}
+#| message: false
+library(tidyverse)
+library(here)
+library(forcats)
+library(lubridate)
+library(ghibli)
+
+# Code for question 1! 
+surveys <- read_csv(here::here("supporting_artifacts", "learning_targets", "Lab 5", "surveys.csv"))
+```
+
+# Revisting Lab 2
+
+```{r reorder}
+surveys |>
+  mutate(
+    species = as.factor(species),
+    species = fct_reorder(.f = species,
+                          .x = weight,
+                          .desc = TRUE)
+  ) |>
+  ggplot(mapping = aes(x = weight, y = species)) + 
+  labs(x = "Weight (Grams)",
+       y = "Species of Rodents") +
+  geom_jitter(alpha = 0.2, color = "mediumpurple") +
+  geom_boxplot() +
+  theme(axis.title.y = element_text(angle = 0))
+
+#Resource: https://statisticsglobe.com/rotate-ggplot2-axis-labels-in-r
+```
+
+# Time Series Plot
+
+### Question 1
+
+```{r time series}
+#1 Create Visualization
+surveys |>
+  ggplot(mapping = aes(x = year,
+                       y = weight,
+                       color = genus)
+         ) +
+  labs(x = "Year",
+       y = "Weight (grams)") +
+  geom_line()
+```
+
+### Question 2
+
+```{r mean time series}
+#| message: false
+surveys |>
+  group_by(year, 
+           genus) |>
+  summarize(
+    mean_weight = mean(weight)
+  ) |>
+  ggplot(mapping = aes(x = year,
+                       y = mean_weight,
+                       color = genus)
+         ) +
+  labs(x = "Year",
+       y = "Mean Weight (grams)") +
+  geom_line()
+```
+
+### Question 3
+
+```{r ordered time series}
+#| message: false
+surveys |>
+  mutate(
+    genus = as.factor(genus),
+    genus = fct_reorder(.f = genus,
+                          .x = weight,
+                          .desc = TRUE)
+  ) |>
+  group_by(year, 
+           genus) |>
+  summarize(
+    mean_weight = mean(weight)
+  ) |>
+  ggplot(mapping = aes(x = year,
+                       y = mean_weight,
+                       color = genus)
+         ) +
+  labs(x = "Year",
+       y = "Mean Weight (grams)") +
+  geom_line()
+```
+
+### Question 4
+
+```{r labeled time series}
+#| message: false
+surveys |>
+  mutate(
+    genus = as.factor(genus),
+    genus = fct_reorder(.f = genus,
+                          .x = weight,
+                          .desc = TRUE)
+  ) |>
+  group_by(year, 
+           genus) |>
+  summarize(
+    mean_weight = mean(weight)
+  ) |>
+  ggplot(mapping = aes(x = year,
+                       y = mean_weight,
+                       color = genus)
+         ) +
+  labs(x = "Year",
+      color = "Genus of Rodents",
+      title = "Mean Weight (grams) of Rodent Genus by Year"
+      ) +
+  geom_line() +
+  theme(axis.title.y=element_blank())
+        
+#Resource: https://www.statology.org/remove-axis-labels-ggplot2/
+```
+
+# Captures over the Week
+
+#### Cleaning Data
+
+```{r cleaning}
+surveys_clean <- surveys|>
+  drop_na(day_of_week) |> 
+  mutate(
+    day_of_week = fct_recode(day_of_week,
+                             "Monday" = "Mon",
+                             "Tuesday" = "Tue",
+                             "Wednesday" = "Wed",
+                             "Thursday" = "Thu",
+                             "Friday" = "Fri",
+                             "Saturday" = "Sat",
+                             "Sunday" = "Sun")
+  )
+
+colors <- ghibli_palette(name = "PonyoMedium", n = 7)
+```
+
+### Question 1
+
+```{r day of week bar graph}
+surveys_clean|>
+  group_by(day_of_week) |>
+  ggplot(mapping = aes(x = day_of_week)) +
+  geom_bar(fill = colors) +
+  labs(
+    x = "Day of the Week",
+    y = "Number of Rodents"
+  ) 
+  
+```
+
+### Question 2
+
+```{r ordered day of week bar graph}
+surveys_clean |>
+  mutate(
+    day_of_week = 
+      fct_relevel(day_of_week, 'Monday','Tuesday','Wednesday',
+                  'Thursday','Friday','Saturday','Sunday')
+  ) |>
+  ggplot(mapping = aes(x = day_of_week)) +
+  geom_bar(fill = colors) +
+  labs(
+    x = "Day of the Week",
+    y = "Number of Rodents",
+    title = "Number of Rodents on Each Day of the Week"
+  ) +
+  theme(axis.title.x = element_blank()) +
+  theme(axis.title.y = element_blank())
+```
+
+### Question 3
+
+```{r stacked bar graph}
+surveys_clean |>
+  mutate (
+    day_type = fct_collapse(day_of_week, 
+                            Weekday = c('Monday','Tuesday','Wednesday',
+                                        'Thursday','Friday'),
+                            Weekend = c('Saturday','Sunday')
+                            ),
+    day_of_week = 
+      fct_relevel(day_of_week, 'Monday','Tuesday','Wednesday',
+                  'Thursday','Friday','Saturday','Sunday')
+    ) |>
+  ggplot(mapping = aes(x = day_type, fill = day_of_week)) +
+  geom_bar() +
+  labs(
+    fill = "Day of the Week",
+    title = "Number of Rodents Throughout the Week"
+  ) +
+  scale_fill_manual(values = colors) +
+  theme(axis.title.x = element_blank()) +
+  theme(axis.title.y = element_blank())
+```
