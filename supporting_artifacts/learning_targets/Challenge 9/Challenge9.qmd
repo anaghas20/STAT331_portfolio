@@ -23,7 +23,10 @@ library(DT)
 library(kableExtra)
 library(ggtext)
 
-state_names_A <- read_csv(here::here("supporting_artifacts", "learning_targets", "Challenge 9", "StateNames_A.csv"))
+state_names_A <- read_csv(here::here("supporting_artifacts", 
+                                     "learning_targets", 
+                                     "Challenge 9", 
+                                     "StateNames_A.csv"))
 ```
 
 ## Dataset Interactive Preview {style="color: #4B0082"}

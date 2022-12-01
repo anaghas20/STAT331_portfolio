@@ -1,0 +1,272 @@
+---
+title: "Challenge 9"
+title-block-banner: "#9370DB"
+author: "Anagha Sikha"
+format: 
+  html:
+    code-fold: true
+    theme: minty
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  error: false
+---
+
+### Set Up {style="color: #b19cd9;"}
+
+```{r setup}
+#| message: false
+library(tidyverse)
+library(here)
+library(DT)
+library(kableExtra)
+library(ggtext)
+
+state_names_A <- read_csv(here::here("supporting_artifacts", 
+                                     "extended_learning", 
+                                     "Challenge 9", 
+                                     "StateNames_A.csv"))
+```
+
+## Dataset Interactive Preview {style="color: #4B0082"}
+
+```{r dataset-interactive}
+#| message: false
+head(state_names_A, 100) |>
+  datatable(options = list(),
+            class = "cell-border stripe",
+            colnames = c('Number of Babies' = 'Count'),
+            caption =  "TABLE 1: Number of U.S. Babies With Names Starting With A"
+            )
+```
+
+## Summarizing & Visualizing Number of Allisons {style="color: #4B0082"}
+
+### Question 1 {style="color: #b19cd9;"}
+
+```{r allisons-Q1}
+#| message: false
+all_allisons <- state_names_A |> 
+  rename(Sex = 'Gender')|>
+  filter(Name == 'Allison') |>
+  group_by(State, Sex) |> 
+  summarize(total_num = sum(Count)) |> 
+  pivot_wider(names_from = Sex,
+              values_from = total_num) |> 
+  rename(Total_Num_Female = 'F',
+         Total_Num_Male = 'M') |> 
+  mutate(across(.cols = Total_Num_Female:Total_Num_Male,
+                .fns = ~replace_na(.,0))
+         ) |> 
+  kable(table.attr = "class=\"striped\"",
+        format = "html",
+        col.names = c('State', 
+                      'Number of Female Babies',
+                      'Number of Male Babies'),
+        caption = "TABLE 2: Number of U.S. Babies with the Name 'Allison'"
+        ) |> 
+  kable_styling(bootstrap_options = "striped")
+all_allisons
+```
+
+### Question 2 {style="color: #b19cd9;"}
+
+```{r allsion-Q2}
+#| message: false
+female_allisons <- state_names_A |> 
+  rename(Sex = 'Gender')|>
+  filter(Name == 'Allison',
+         Sex == 'F') |> 
+  group_by(Year) |>
+  summarize(Total_Num = sum(Count))
+```
+
+### Question 3 {style="color: #b19cd9;"}
+
+```{r allison-Q3}
+#| message: false
+female_allisons |>
+  ggplot(mapping = aes(x = Year,
+                       y = Total_Num)
+         ) +
+  labs(x = "Year",
+       title = 'Number of Female U.S. Babies Named "Allison" Over Time',
+       subtitle = "From 1997 to 2014"
+       ) +
+  theme(axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 7)) +
+  scale_x_continuous(breaks = seq(from = 1997, to = 2014, by = 1)) +
+  geom_line(color = '#9370DB')
+```
+
+## Modeling the Number of Allisons {style="color: #4B0082"}
+
+### Question 4 {style="color: #b19cd9;"}
+
+```{r allison-Q4}
+num_allisons_lm <- female_allisons |> 
+  #all the allisons per year
+  lm(Total_Num ~ Year, data = _)
+num_allisons_lm
+```
+
+### Question 5 {style="color: #b19cd9;"}
+
+```{r allison-Q5}
+#| message: false
+female_allisons |> 
+  ggplot(aes(x = Year, y = Total_Num)) +
+  geom_point(color = '#4B0082') +
+  stat_smooth(method = "lm") + 
+  labs(title = 'Number of Babies Named "Allison" vs Time (Year)',
+       subtitle = "From 1997 to 2014") +
+  theme(axis.title.y = element_blank(),
+       axis.title.x = element_blank(),
+       axis.text.x = element_text(size = 7)) +
+  scale_x_continuous(breaks = seq(from = 1997, to = 2014, by = 1))
+```
+
+### Question 6 {style="color: #b19cd9;"}
+
+##### **Predicted Number of Allison's = 209689.8 - 101.5 (Year)**
+
+### Question 7 {style="color: #b19cd9;"}
+
+```{r allison-Q7}
+#| message: false
+num_allisons_lm |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid,
+                       x = .fitted)) +
+  geom_point(color = '#4B0082') + 
+  labs(title = "Predicted Number vs Residual Number of Allison's Over Time",
+       subtitle = "From 1997 to 2014") +
+  theme(axis.title.y = element_blank(),
+       axis.title.x = element_blank(),
+       axis.text.x = element_text(size = 7))
+```
+
+##### Patterns: From the residual plot, we see that the points are randomly scattered around the residual line (y = 0). There are no significant patterns.
+
+### Question 8 {style="color: #b19cd9;"}
+
+##### From this regression model, we see that there is a negative slope. We see that for every one year increase, there are around 101.5 less babies named Allison.
+
+## Spelling By State {style="color: #4B0082"}
+
+### Question 1 {style="color: #b19cd9;"}
+
+```{r allan-Q1}
+#| message: false
+purple <- c("#CCCCFF", "#7B68EE", "#4B0082")
+
+#filtered Dataset
+male_allan <- state_names_A |> 
+  rename(Sex = 'Gender')|>
+  filter(Name == 'Allan' | Name == 'Alan' | Name == 'Allen',
+         Sex == 'M')
+
+#graph
+male_allan |>
+  group_by(Year, Name) |> 
+  summarize(Total_Num = sum(Count)) |> 
+  ggplot(mapping = aes(x = Year,
+                       y = Total_Num,
+                       color = Name)
+         ) +
+  labs(x = "Year",
+       title = str_c("Number of Male U.S. Babies Named ",
+                     "<span style = 'color:#CCCCFF'>**Alan**</span>",
+                     ", <span style = 'color:#7B68EE'>**Allan**</span>",
+                     ", and <span style = 'color:#4B0082'>**Allen**</span>"),
+       subtitle = "From 1997 to 2014"
+       ) +
+  theme(plot.title = element_markdown(),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(size = 7),
+        legend.position = "none") +
+  scale_x_continuous(breaks = seq(from = 1997, to = 2014, by = 1)) +
+  geom_line() +
+  scale_color_manual(values = purple)
+```
+
+### Question 2 {style="color: #b19cd9;"}
+
+```{r allan-Q2}
+#| message: false
+states_male_allan <- male_allan |>
+  filter(State == 'CA' | State == 'PA',
+         Year == 2000) |> 
+  mutate(Count = replace_na(Count, 0)) |> 
+  group_by(State, Name) |> 
+  summarize(Total_Num = sum(Count)) |> 
+  pivot_wider(names_from = Name,
+              values_from = Total_Num
+              )
+# cannot pipeline because next question uses this dataset
+kable(states_male_allan,
+      format = "html",
+        col.names = c('State', 
+                      'Number of Alan',
+                      'Number of Allan',
+                      'Number of Allen'),
+        align = 'r',
+        caption = "TABLE 3: Number of Male Babies Named Alan, Allan, or Allen in California and Pennsylvania"
+        )  |> 
+  kable_styling(bootstrap_options = "striped")
+```
+
+### Question 3 {style="color: #b19cd9;"}
+
+```{r allan-Q3}
+#| message: false
+ca_pa_male_allan <- states_male_allan |>
+  rename(Allan_Count = 'Allan',
+         Allen_Count = 'Allen',
+         Alan_Count = 'Alan') |> 
+  mutate(
+    Total_Count = Alan_Count + Allan_Count + Allen_Count,
+    Alan_Count = round((Alan_Count/Total_Count) * 100, 2),
+    Allan_Count = round((Allan_Count/Total_Count) * 100, 2),
+    Allen_Count = round((Allen_Count/Total_Count) * 100, 2)
+    ) |> 
+  select(-Total_Count) |> 
+  kable(format = "html",
+        col.names = c('State', 
+                      'Percentage of Alan',
+                      'Percentage of Allan',
+                      'Percentage of Allen'),
+        caption = "TABLE 4: Percentage of Male Babies Named Alan, Allan, or Allen in California and Pennsylvania"
+        ) |> 
+  kable_styling(bootstrap_options = "striped")
+ca_pa_male_allan 
+```
+
+# Part 2
+
+```{r}
+#| message: false
+# Spicing up Spelling By State Question 2
+states_male_allan <- male_allan |>
+  filter(State == 'CA' | State == 'PA',
+         Year == 2000) |> 
+  mutate(Count = replace_na(Count, 0)) |> 
+  group_by(State, Name) |> 
+  summarize(Total_Num = sum(Count)) |> 
+  pivot_wider(names_from = Name,
+              values_from = Total_Num
+              ) |> 
+  datatable(options = list(lengthChange = FALSE,
+                           paging = FALSE),
+            class = "cell-border stripe", 
+            colnames = c('State',
+                         'Alan Count',
+                         'Allan Count',
+                         'Allen Count'),
+            caption =  "TABLE 5: Number of Male Babies Named Alan, Allan, or Allen in California and Pennsylvania")
+
+states_male_allan
+```

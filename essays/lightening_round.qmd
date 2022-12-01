@@ -3,3 +3,23 @@ title: "Lightening Round Essays"
 format: html
 editor: visual
 ---
+
+#### Finish the sentence with another student's name: "If \[Student\] doesn't earn an A, then nobody should, because..." Explain your choice and your reasoning.
+
+-   If Hannah Pawig doesn't earn an A, then nobody should, because she shows has demostrated proficiency in majority or all of the learning targets. She has completed almost all of the assignments on time, submitting full solutions. She revises code on her assignments when the opportunity is given. She has completed majority of Challenge assignments with evidence of extended learning and incorporates her creativity in her assignments. Hannah is a great group member, providing her input when doing practice activity and answering questions other group members have on the labs and challenges. Hannah also provides respectful and helpful peer-code reviews. I chose Hannah because she has been helpful and kind group member throughout this whole class and works hard on all the assignments.
+
+#### What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
+
+-   
+
+#### What was the easiest part of the class for you? Explain why.
+
+-   
+
+#### What part of the class surprised or interested you the most? Explain why.
+
+-   The whole ungrading system suprised me the most as I was not expecting it and helped with the lab/challenge format of the class where we could improve on assignments we have submitted.
+
+#### Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
+
+-   Make sure to understand concepts that you are confused on immediately because it will help with solving questions later on, since you build on top of concepts.
