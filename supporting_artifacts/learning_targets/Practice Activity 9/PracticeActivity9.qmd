@@ -1,0 +1,110 @@
+---
+title: "PracticeActivity9"
+format: html
+editor: visual
+---
+
+```{r setup}
+#| message: false
+library(tidyverse)
+library(here)
+```
+
+```{r}
+#| message: false
+mystery_animal <- read_csv(here::here("supporting_artifacts", "learning_targets",'Practice Activity 9', 'mystery_animal.csv'))
+```
+
+```{r}
+mystery_animal_lm <- mystery_animal |> 
+  lm(weight_after ~ weight_before, data = _)
+mystery_animal_lm
+```
+
+```{r}
+mystery_animal |> 
+  ggplot(aes(x = weight_before, y = weight_before)) +
+  geom_point() +
+  stat_smooth(method = "lm") + 
+  labs(x = "Bill Depth (mm)", 
+       y = "Bill Length (mm)")
+```
+
+```{r}
+mystery_animal_lm |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid,
+                       x = .fitted)) +
+  geom_point()
+```
+
+### Warm Up
+
+#### Question 1
+
+What is the 95th percentile for trumpet weight?
+
+```{r}
+qunif(p = 0.95, min = 1.5, max = 3.5)
+```
+
+#### Question 2
+
+What is the 10th percentile for trombone weight?
+
+```{r}
+qnorm(p = 0.10, mean = 4.6, sd = 0.8)
+```
+
+#### Question 3
+
+About what percent of trombones do you expect to be more than 5 pounds?
+
+```{r}
+1- pnorm(q = 5, mean = 4.6, sd = 0.8)
+```
+
+#### Question 4
+
+```{r}
+1 - pchisq(q = 5, df = 4)
+```
+
+#### Question 5
+
+```{r}
+sim <- rnorm(100, mean = 4.6, sd = 0.8)
+sum(sim < 4)
+```
+
+```{r}
+music_man <- function(n_tromb, n_cor, n_reed){
+  #vector of random distribution of trombone weight
+  trombones <- rnorm(n = n_tromb, mean = 4.6, sd = 0.8)
+  #vector of random distribution of cornet weight
+  cornets <- runif(n = n_cor, min = 1.5, max = 3.5)
+  #vector of random distribution of reed weight
+  reeds <- rchisq(n = n_reed, df = 4)
+  total_weight <- sum(trombones) + sum(cornets) + sum(reeds)
+  return(total_weight)
+  
+}
+
+set.seed(1957)
+
+my_weights <- rerun(.n = 1000, 
+                    music_man(n_tromb = 76, 
+                              n_cor = 110, 
+                              n_reed = (542 + 318 + 175)
+                              )
+                    ) |> 
+  flatten_dbl()
+
+
+```
+
+```{r}
+sum(my_weights < 4532)
+# 7 total weights out of 1000 are lower than his weight 
+# really unlikely to get 4352 weight if they we real instruments
+```

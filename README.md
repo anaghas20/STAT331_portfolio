@@ -7,10 +7,17 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 ## Final Grade Reflection
 
 ## Essay Responses
+- Data Scientist
+- Efficiency
+- Lightening Round
 
 ## Supporting Artifacts 
 
 ### Demonstration of Learning Targets
+- Challenge 2
+- Lab 4
+- Lab 5
+- Practice Activity 4
 
 ### Demonstration of Continued Learning
 

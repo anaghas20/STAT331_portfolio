@@ -1,0 +1,173 @@
+---
+title: "Lab 8"
+title-block-banner: "#0F8A5F"
+author: "Anagha Sikha"
+format: 
+  html:
+    code-fold: true
+    theme: minty
+editor: visual
+execute: 
+  echo: true
+  error: false
+---
+
+## Set Up {style="color: #CC231E;"}
+
+```{r packages}
+#| include: false
+library(dplyr)
+library(glue)
+library(stringr)
+library(purrr)
+```
+
+```{r csv-file}
+xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
+```
+
+## Pluralizing Function {style="color: #CC231E;"}
+
+```{r pluralize-function}
+pluralize_gift <- function(gift){
+
+gift <-
+  case_when(
+    str_detect(string = {{ gift }},
+               pattern = 'oo') ~ 
+      str_replace(string = {{ gift }},
+                  pattern = 'oo', 
+                  replacement = 'ee'),
+    str_detect(string = {{ gift }},
+               pattern = 'y$') ~ 
+      str_replace(string = {{gift}}, 
+                  pattern = 'y$', 
+                  replacement = 'ies'),
+    str_detect(string = {{ gift }},
+                pattern = 's$') ~ {{gift}}, 
+    TRUE ~ str_c({{ gift }}, 's', sep = "")
+    )
+return(gift)
+
+}
+```
+
+## Make Phrases Function {style="color: #CC231E;"}
+
+```{r phrase-function}
+make_phrase <- function(num_word, item, verb, adjective, location) {
+  
+  ## Step 1: Replace NAs with blank strings
+  num_word <- str_replace_na(num_word, "")
+  verb <- str_replace_na(verb, "")
+  item <- str_replace_na(item, "")
+  adjective <- str_replace_na(adjective, "")
+  location <- str_replace_na(location, "")
+  
+  ## Step 2: If the day is larger than 1, the items need pluralized! 
+  item <- ifelse(test = num_word != "one",
+         yes = pluralize_gift(item),
+         no = item) 
+  ## Step 3: If the word starts with a vowel, add "an" to the beginning
+   num_word <- case_when(
+      num_word == 'one' & str_detect(string = item,
+                                      pattern = "^[aeiou]") ~ 'an',
+      num_word == 'one' & !str_detect(string = item,
+                                      pattern = "^[aeiou]") ~ 'a',
+      TRUE ~ num_word
+    )
+  ## Step 4: Glue all of the pieces together!
+   phrase <- glue::glue('{num_word} {adjective} {item} {verb} {location}') |> 
+     str_squish()
+  return(phrase)
+}
+```
+
+#### Phrases Test {style="color: #34A65F"}
+
+```{r}
+xmas2 <- xmas %>%
+  mutate(day.num = as.character(english::english(Day)), 
+    Full.Phrase = pmap_chr(
+      list(num_word = day.num,
+           item = Gift.Item,
+           verb = Verb,
+           adjective = Adjective,
+           location = Location),
+      make_phrase
+      )
+  )
+```
+
+# 1. Singing the Song {style="color: #0F8A5F"}
+
+## 1.1 Step Three: Iteration {style="color: #CC231E;"}
+
+```{r iteration}
+# Produces the string for one day of the song.
+# Arguments -- dataset -- A data frame containing information about gifts
+# Arguments -- line -- The number of the line for the day you want to sing about
+# Arguments -- phrase_col -- The variable name for the column in the dataset that contains the song phrases
+# Return -- A string singing the line of the song with all gifts for the given day.
+
+sing_line <- function(dataset, line, phrase_col){
+  
+  # Step 1: Setup the intro line
+  num_word <- english::ordinal(line)
+  
+  intro <- glue::glue("On the {num_word} day of Christmas, my true love gave to me:")
+  
+  # Step 2: Sing the gift phrases
+  phrases <- dataset |>
+    pull( {{phrase_col}} )
+  
+  reorder_phrases <- phrases[line:1] #character vector
+  
+  combined_phrases <- glue_collapse(reorder_phrases, 
+                                    sep = "\n",
+                                    last = " and\n")
+  
+  return(glue('{intro} \n {combined_phrases}.'))
+
+}
+
+```
+
+#### Small Test {style="color: #34A65F"}
+
+```{r small-test}
+sing_line(xmas2, 2, phrase_col = Full.Phrase)
+```
+
+#### A Larger Test {style="color: #34A65F"}
+
+```{r larger-test}
+map_chr(1:12, ~ sing_line(xmas2, .x, Full.Phrase)) |>
+  str_c(collapse = "\n") |>
+  cat()
+```
+
+## 1.2 Step Four: Use Your Functions! {style="color: #CC231E;"}
+
+```{r}
+xmas2 <- xmas |>
+  mutate(
+    day.num = as.character(english::english(Day)), 
+    Full.Phrase = pmap_chr(.l = list(num_word = day.num, 
+                                     item = Gift.Item, 
+                                     verb = Verb, 
+                                     adjective = Adjective, 
+                                     location = Location), 
+                           .f = make_phrase)
+  )
+
+map_chr(1:12, ~sing_line(xmas2, .x, Full.Phrase)) |>
+  str_c(collapse = "\n") |>
+  cat()
+```
+
+## **1.3 Revisions** {style="color: #CC231E;"}
+
+```{r}
+print("I hope I get no revisions :) ")
+```

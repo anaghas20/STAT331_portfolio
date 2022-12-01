@@ -39,30 +39,33 @@ This data set includes information about the weekly retail scan data from 2015 t
 ### Question 2
 
 ```{r, results = 'hide'}
+#looking at region variable
 avocado |>
     distinct(region, keep_all = TRUE)
+
+#cleaning dataset
 avocado_clean <- avocado|>
   rename(total_volume = `Total Volume`,
          total_bags = `Total Bags`,
          large_HASS = '4225',
          small_HASS = '4046',
          xl_HASS = '4770')
-```
 
-```{r}
+#region df
 avocado_region <- data.frame(region = c('GreatLakes', 
                                         'Midsouth', 
                                         'Northeast',
-                                        'NorthernNewEngland',
                                         'SouthCentral',
                                         'Southeast',
                                         'West', 
                                         'WestTexNewMexico'))
-
+#total df
 avocado_total <- data.frame(region = c('TotalUS'))
 
-avocado_state <- data.frame(region = c('California','South Carolina'))
+#state df
+avocado_state <- data.frame(region = c('California', 'South Carolina'))
 
+#city df
 avocado_city <- avocado_clean |>
   anti_join(avocado_region, by = "region") |>
   anti_join(avocado_state, by = "region") |>
@@ -150,8 +153,8 @@ most_diff <- price_diff |>
 price_diff |>
   ggplot(mapping = aes(x = region, y = price_diff)) +
   geom_point(color = c("dodgerblue4",
-                             "gold",
-                             "darkolivegreen3",
+                             "gold3",
+                             "darkolivegreen4",
                              "coral2")) +
   labs(x = "Region of Avocado",
        y = "Difference in Average Price of Avocado ($)"
