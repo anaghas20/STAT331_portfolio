@@ -39,7 +39,7 @@ This data set includes information about the weekly retail scan data from 2015 t
 
 ### Question 2
 
-```{r, results = 'hide'}
+```{r data-cleaning, results = 'hide'}
 #looking at region variable
 avocado |>
     distinct(region, keep_all = TRUE)
@@ -75,7 +75,7 @@ avocado_city <- avocado_clean |>
 
 ### Question 3
 
-```{r}
+```{r major-region}
 avocado_clean |>
   semi_join(avocado_region, by = "region") |>
   filter(year == 2017, type == "organic") |>
@@ -89,7 +89,7 @@ The major region that sold the most organic, small Hass avocados in 2017 is Nort
 
 ### Question 4
 
-```{r}
+```{r highest-month}
 avocado_clean |>
   semi_join(avocado_region, by = "region") |>
   separate(col = Date,
@@ -107,7 +107,7 @@ The month of January had the highest volume of avocado sales at 533,030,497 avoc
 
 ### Question 5
 
-```{r}
+```{r top5}
 top_5 <- avocado_city |>
   select(total_volume, region) |>
   group_by(region) |>
@@ -128,7 +128,7 @@ ggplot(avocado_city |>
 
 Los Angeles, Plains, Dallas Ft. Worth, Houston, New York were the top five regions with the highest averages of most avocados sold.
 
-```{r}
+```{r CA-cities-df}
 CA_cities <- data.frame(region = c('LosAngeles', 'SanDiego', 'Sacramento', 'SanFrancisco'))
 avocado_CA <- avocado_clean |>
   semi_join(CA_cities, by = "region") 
@@ -136,22 +136,25 @@ avocado_CA <- avocado_clean |>
 
 ### Question 6
 
-```{r}
+```{r region-graph}
 #| message: false
-price_diff <- avocado_CA |>
+
+# finding the difference in average prices of each CA city
+df_price_diff <- avocado_CA |>
   select(region, type, AveragePrice) |>
   group_by(region, type) |>
-  summarize(AveragePrice_Region_Type = mean(AveragePrice)) |>
+  summarize(AveragePrice_Region_Type = mean(AveragePrice), .groups = "drop") |>
   pivot_wider(names_from = type,
               values_from = AveragePrice_Region_Type) |>
-  mutate(price_diff = abs(conventional - organic))  |>
-  arrange(desc(price_diff))
-price_diff
+  mutate(price_diff = abs(conventional - organic))
 
-most_diff <- price_diff |> 
-  slice_head(n = 1)
+# getting city with largest price difference
+most_diff <- df_price_diff |> 
+  slice_max(price_diff)
+most_diff
 
-price_diff |>
+# scatterplot of the price difference between regions
+df_price_diff |>
   ggplot(mapping = aes(x = region, y = price_diff)) +
   geom_point(color = c("dodgerblue4",
                              "gold3",
@@ -167,21 +170,23 @@ San Francisco is the region in California with the largest difference in average
 
 ### Question 7
 
-```{r graph}
+```{r proportion-graph}
 #| message: false
 #| error: false
 
 prop_CA <- avocado_CA |>
   select(region, type, small_HASS, large_HASS, xl_HASS, total_volume) |>
   group_by(region, type) |>
+  #finding the means
   summarize(mean_small = mean(small_HASS),
             mean_large = mean(large_HASS),
             mean_xl = mean(xl_HASS),
             total_mean = mean_small + mean_large + mean_xl) |>
-            # mean_total_volume = mean(total_volume)) |>
+  # getting the proportion of each avocado size
   mutate(prop_small = mean_small/total_mean,
          prop_large = mean_large/total_mean,
          prop_xl = mean_xl/total_mean) |>
+  #putting all the proportions values in a column
   pivot_longer(prop_small:prop_xl,
                names_to = 'proportion_sizes',
                values_to = 'mean_proportion')

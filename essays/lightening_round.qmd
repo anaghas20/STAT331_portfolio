@@ -6,20 +6,20 @@ editor: visual
 
 #### Finish the sentence with another student's name: "If \[Student\] doesn't earn an A, then nobody should, because..." Explain your choice and your reasoning.
 
--   If Hannah Pawig doesn't earn an A, then nobody should, because she shows has demostrated proficiency in majority or all of the learning targets. She has completed almost all of the assignments on time, submitting full solutions. She revises code on her assignments when the opportunity is given. She has completed majority of Challenge assignments with evidence of extended learning and incorporates her creativity in her assignments. Hannah is a great group member, providing her input when doing practice activity and answering questions other group members have on the labs and challenges. Hannah also provides respectful and helpful peer-code reviews. I chose Hannah because she has been helpful and kind group member throughout this whole class and works hard on all the assignments.
+-   If Hannah Pawig doesn't earn an A, then nobody should, because Hannah has demonstrated proficiency in majority of the learning targets, revised code on her assignments when the opportunity was given, demonstrated extended learning on her challenge assignments, incorporated creativity in her assignments, helped her classmates through answering others' questions in a kind and respectful manner, and worked hard throughout the whole class.
 
 #### What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
 
--   
+-   Lab 4 was the most difficult part of the class because I felt it required out of the box thinking to apply the skills we had learn for so far, such as pivot_longer, pivot_wider, mutate, summarize, select, groupby, filter, in order to answer specific questions about the dataset.
 
 #### What was the easiest part of the class for you? Explain why.
 
--   
+-   I found the organization and personalizing each quarto the easiest part of the class because it was fun to incorporate some creativity in each of my assignments whether it was choosing color palette for graphs, changing the font sizes and colors for the different titles in a file, or selecting background colors and themes.
 
 #### What part of the class surprised or interested you the most? Explain why.
 
--   The whole ungrading system suprised me the most as I was not expecting it and helped with the lab/challenge format of the class where we could improve on assignments we have submitted.
+-   The whole ungrading system suprised me the most as I was not expecting it, and this system helped with the lab/challenge format of the class where we were able to continue to improve on assignments we have already submitted.
 
 #### Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
 
--   Make sure to understand concepts that you are confused on immediately because it will help with solving questions later on, since you build on top of concepts.
+-   One piece of advice I would give to another student would be to make sure to understand the concepts that you are confused on immediately because it will help with solving questions later on, since these topics and concepts build on top of one another, and to not be afraid to ask for additional help to clarify any misunderstandings or confusions you have.

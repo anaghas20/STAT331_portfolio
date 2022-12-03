@@ -75,6 +75,11 @@ CA_housing_prices <-
                         "2015", "2016", "2017","2018")
               ) |>
   mutate(year = as.numeric(year))
+
+# median house price LA: https://www.zillow.com/home-values/12447/los-angeles-ca/
+# median house price SD: https://www.zillow.com/home-values/54296/san-diego-ca/
+# median house price Sac: https://www.zillow.com/home-values/20288/sacramento-ca/
+# median house price SF: https://www.zillow.com/home-values/20330/san-francisco-ca/
 ```
 
 ## Joining Datasets

@@ -35,6 +35,8 @@ I have demonstrated proficiency in: 
 
 -   DSM-2 in Challenge 9 Question 4 and Question 7
 
+-   R1 - All of Challenge 9
+
 In Lab 5 Set Up, I use the here package to load in the data and not show any message. In my YAML set up my quarto document to be professional looking with a theme and having code-folds.
 
 **Continued Learning:**
@@ -47,9 +49,13 @@ In Challenge 2, I attempted all 3 levels because they all taught me something ne
 
 **Revise Thinking**
 
+how demonstrate revision: what is in revision md and highlights and why i chose the artifacts. way i did revsions
+
 I show my ability to revise my thinking through submitting revisions on labs and challenges and through revising code that receives an S but has comments. For example, in my Lab 1 and Lab 2 I received comments about removing messages and changing the axis label and did not have to submit a revision for those sections. However, I found it important to improve those parts of my lab, and learned how to remove the messages and write a clearer axis label. This was helpful and important, as the next lab required me to incorporate those improvements, and I was able to prevent a repeat of my mistakes. I have also attended office hours to get extra help on problems that I had difficulty with revising such as Lab 4 Question 6 and 7. Through the extra help, I was able to understand more about how to organize the code to be more efficient and understand where I went wrong. I also included reflections along all my revisions, which has helped me think about the process of how I improved my code and learned from my mistakes.
 
 **Growth As Team Member**
+
+reference evidence: claim of team member
 
 I have grown as a team member by working together with my team to solve each question in the labs. I have listened to my teammates when they have questions, and try my best to support and help them find the answer. During class I ask Dr. Theobold and Bella team questions and then continue to work together from the sugestions we receive.
 
@@ -60,7 +66,5 @@ Additionally, I have grown as a team member by providing feedback on the tidines
 **Attention to Personal Goals**
 
 At the start of the course, I wanted to be open-minded when learning the language R as coding can be difficult, and it is important to be patient and learn multiple different ways to solve problems. I believe that I am successful in staying open-minded and patient while I have been learning R and participating in the class, as I take the time to learn the new skills from Preview Activities. I also ask questions to the professor, learning assistant, and other students to make sure I understand the topics. As the topics have gotten harder, I have made sure to allocate more time towards the class to understand the notes, videos, and lecture slides. When I come across questions, I make sure to ask them right away to prevent any doubts from lingering. As the course goes on, I believe I will continue to be able to accomplish my goals.
-
-I believe I have earned an A so far in STAT 331. I have demonstrated proficiency for the majority of the learning targets that we have learned so far, revised code from my labs and challenges when the opportunity was given, have extended my thinking to all the Challenge assignments, and have taken risks by completing tasks that I did not know would be correct. I communicate with my team and Dr. Theobold, asking questions when there are confusions, and asking for additional help in office hours and in the Discord. I have been present, respectful, prepared for class and completed all of the assignments. 
 
 \
