@@ -18,7 +18,7 @@ editor: visual
 
 #### What part of the class surprised or interested you the most? Explain why.
 
--   The whole ungrading system suprised me the most as I was not expecting it, and this system helped with the lab/challenge format of the class where we were able to continue to improve on assignments we have already submitted.
+-   The whole ungrading system surprised me the most as I was not expecting it, and this system helped with the lab/challenge format of the class where we were able to continue to improve on assignments we have already submitted.
 
 #### Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
 

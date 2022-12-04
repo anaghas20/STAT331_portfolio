@@ -30,6 +30,7 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 - Revision Instruction RMarkdown
 
 #### Extending My Thinking
+- Challenge 2
 - Challenge 4
 - Challenge 9
 
