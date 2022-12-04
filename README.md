@@ -23,7 +23,7 @@
 ### Demonstration of Continued Learning
 
 #### Revising My Thinking
-- Revision Instruction RMarkdown
+- Revision Instructions RMarkdown
 
 #### Extending My Thinking
 - Challenge 2

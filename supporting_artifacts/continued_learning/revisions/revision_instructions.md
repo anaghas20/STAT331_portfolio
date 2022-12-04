@@ -1,6 +1,4 @@
-For the revisions included in your Portfolio, to help me understand the nature
-of your revisions, please denote somehow the feedback I provided you (e.g.,
-boldface, italics, colored text) before your revisions.
+## Revisions and Reflections
 
 #### Lab 4 Question 6 Feeback: 
 ##### Revision 1: "You should remove the messages from the summarize() function. I want you to pivot your dataframe to obtain the the differences!"
