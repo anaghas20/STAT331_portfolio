@@ -37,10 +37,10 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 ### Growth as a Team Member
 - Answering Discord Question Lab 7
 - Asking Lab 9 Question On Discord
-- STAT 331 Group Chat Helping 1
-- STAT 331 Group Chat Helping 2
-- STAT 331 Group Chat Helping 3
-- STAT 331 Group Chat Helping 4
+- Group Chat Helping 1
+- Group Chat Helping 2
+- Group Chat Helping 3
+- Group Chat Helping 4
 
 
 
