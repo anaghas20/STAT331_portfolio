@@ -5,6 +5,7 @@ format:
   html:
     code-fold: true
     theme: minty
+    self-contained: true
 editor: visual
 execute: 
   echo: true
@@ -22,7 +23,10 @@ library(lubridate)
 library(ghibli)
 
 # Code for question 1! 
-surveys <- read_csv(here::here("supporting_artifacts", "learning_targets", "Lab 5", "surveys.csv"))
+surveys <- read_csv(here::here("supporting_artifacts", 
+                               "learning_targets", 
+                               "Lab 5",
+                               "surveys.csv"))
 ```
 
 # Revisting Lab 2

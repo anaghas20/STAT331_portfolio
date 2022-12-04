@@ -6,6 +6,7 @@ format:
   html:
     monobackgroundcolor: lavender
     code-fold: true
+    self-contained: true
 editor: visual
 execute: 
   echo: true
@@ -69,7 +70,10 @@ For this lab we will use the **`readr`** package (from the `tidyverse`) to read 
 ```{r data}
 #| message: false
 # Code for question 1! 
-surveys <- read_csv(here::here("supporting_artifacts", "extended_learning", "Challenge 2", "surveys.csv"))
+surveys <- read_csv(here::here("supporting_artifacts", 
+                               "extended_learning", 
+                               "Challenge 2", 
+                               "surveys.csv"))
 surveys
 ```
 

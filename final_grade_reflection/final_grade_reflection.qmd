@@ -17,13 +17,15 @@ I have demonstrated proficiency in: 
 
 -   WD-2, WD-3, WD-5, PE-1 in Lab 4 Question 3
 
--   WD-4, WD-7, R-3, R-2 in Lab 4 Question 6 and Question 7
+-   WD-4, WD-7, R-2, R-3 in Lab 4 Question 6 and Question 7
 
--   WD-6 Lab 4 Question 2
+-   WD-6 in Lab 4 Question 2
 
--   DVS-1, DVS-2, DVS-3, DVS-5 in Lab 5 "Captures Over the Week" Question 3
+-   DVS-1 in Lab 5 "Revisiting Lab 2", "Time Series Plot" Question 4, "Captures Over the Week" Question 3 and in Lab 4 Question 6 and Question 7
 
--   DVS-4 in Lab 5 Question 2, 3, 4 and "Revisiting Lab 2"
+-   DVS-2, DVS-3 in Lab 5 "Captures Over the Week" Question 3
+
+-   DVS-4, DVS-5 in Lab 5 "Time Series Plot" Question 4
 
 -   DVS-6, DVS-7 in Challenge 9 Part 2
 
@@ -35,7 +37,7 @@ I have demonstrated proficiency in: 
 
 -   DSM-2 in Challenge 9 Question 4 and Question 7
 
--   R1 - All of Challenge 9
+-   R1 - Challenge 9 YAML, 'Set Up' (professional looking: the whole file)
 
 **Extended Thinking:**
 
@@ -47,16 +49,16 @@ I demonstrated extending my learning in the various challenge assignments by app
 
 evidence: supporting_artifacts \> continued_learning
 
-I show my ability to revise my thinking through submitting revisions on labs and challenges that receive G or receive an S but have comments on improvement. I also revise my thinking by reflecting on these mistakes and comments. In the Revisions Markdown file in the 'continued_learning' folder there are examples of the mistakes I made in labs and challenges, and what I learned from fixing these mistakes in my reflections. I chose the revisions from Lab 4 and Challenge 3 because these were artifacts where I had to revise multiple times, and I am proud of the revised results I was able to get at the end. These artifacts show my growth in the skills from these labs, as I was able to solidify my understanding in pivots, joins, mutating, summarizing, group by, and slicing. These artifacts showed that I first attempted to revise the problems I got wrong by looking at my notes and previous assignments to find information on the skills I need to fix. When I still got the problems wrong a second time, I went to office hours to understand what I was doing wrong and attempt to fix the problems with Dr. Theobold. By revising my code, I was able to prevent repeating the same mistake in future labs. Along with revising the code, I submit reflections discussing what I fixed, my understanding of my mistake, and how the new solution fixes the issue. These reflections have helped me understand my previous thought process when solving the problem and how the new code is a better solution.
+I show my ability to revise my thinking through submitting revisions on labs and challenges that receive G or receive an S but have comments on improvement. I also revise my thinking by reflecting on these mistakes and comments. In the Revisions Markdown file in the 'continued_learning' folder there are examples of the mistakes I made in labs and challenges, and what I learned from fixing these mistakes in my reflections. I chose the revisions from Lab 4 and Challenge 3 because these were artifacts where I had to revise multiple times, and I am proud of the revised results I was able to get at the end. These artifacts show my growth in the skills from these assignments, as I was able to solidify my understanding in pivots, joins, mutating, summarizing, group by, and slicing. These artifacts showed that I first attempted to revise the problems I got wrong by looking at my notes and previous assignments to find information on the skills I need to fix. When I still got the problems wrong a second time, I went to office hours to understand what I was doing wrong and attempt to fix the problems with Dr. Theobold. By revising my code, I was able to prevent repeating the same mistake in future labs. Along with revising the code, I submit reflections discussing what I fixed, my understanding of my mistake, and how the new solution fixes the issue. These reflections have helped me understand my previous thought process when solving the problem and how the new code is a better solution.
 
 **Growth As A Team Member**
 
 evidence: supporting_artifacts \> growth_team_member
 
-I have grown as a team member by working together with my team to solve each question in the Practice Activities. I have listened to my teammates when they have questions, and try my best to support and help them find the answer. During class I ask Dr. Theobold and Bella team questions and then continue to work together with my team from the sugestions we receive. I was able to support my classmates by answering questions on labs, challenges, and anything else related to 331 on my team's group chat. In 'GroupChatHelping1-4', I help my classmates by explaining what I did to solve the problems they have questions on I also have been able to answer a classmate's questions on Discord where there was confusion as to why the graph looked 'ugly', and I had noticed an error in their mutate code. I have also asked questions on Discord to clarify parts of labs that hopefully help other students who have similar questions, as seen in ''. Additionally, I have grown as a team member by putting my best effort to provide feedback on the tidiness and efficiency of a classmate's code, making sure to provide praise on something that was done well and provide constructive criticism. I have contributed to creating a respectful classroom learning environment by listening and not judging other students' questions, as they can be clearing up confusions me and other students may have, and being being kind and respectful to my classmates.
+I have grown as a team member by working together with my team to solve each question in the Practice Activities. I have listened to my teammates when they have questions, and try my best to support and help them find the answer. During class I ask Dr. Theobold and Bella team questions and then continue to work together with my team from the sugestions we receive. I was able to support my classmates by answering questions on labs, challenges, and anything else related to 331 on my team's group chat. In 'GroupChatHelping1-4', I help my classmates by explaining what I did to solve the problems they have questions on. I also have been able to answer a classmate's questions on Discord as seen in 'AnsweringDiscordQuestionLab7', where there was confusion as to why the graph looked 'ugly', and I had noticed an error in their mutate code. I have also asked questions on Discord to clarify parts of labs that hopefully help other students who have similar questions, as seen in 'AskingQuestionOnDiscord_1-2'. Additionally, I have grown as a team member by putting my best effort to provide feedback on the tidiness and efficiency of a classmate's code, making sure to provide praise on something that was done well and provide constructive criticism as seen in 'Lab3-4_PeerCodeReview' . I have contributed to creating a respectful classroom learning environment by listening and not judging other students' questions, as they can be clearing up confusions me and other students may have, and being being kind and respectful to my classmates.
 
 **Attention to Personal Goals**
 
-At the start of the course, I wanted to be open-minded when learning the language R as coding can be difficult, and it is important to be patient and learn multiple different ways to solve problems. I believe that I was successful in staying open-minded and patient while I have been learning R and participating in the class, as I take the time to learn the new skills from Preview Activities. I also ask questions to the professor, learning assistant, and other students to make sure I understand the topics. As the topics have gotten harder, I have made sure to allocate more time towards the class to understand the notes, videos, and lecture slides. When I come across questions, I make sure to ask them right away to prevent any doubts from lingering. I also am proud with how much I learned over this quarter and how I was able to still have fun with my assignments especially through making the quarto files have a theme I liked and incorporating different colors to make the file look more appealing.
+At the start of the course, I wanted to be open-minded when learning the language R as coding can be difficult, and it is important to be patient and learn multiple different ways to solve problems. I believe that I was successful in staying open-minded and patient while I have been learning R and participating in the class, as I take the time to learn the new skills from Preview Activities. I also asked questions to the professor, the learning assistant, and other students to make sure I understand the topics. As the topics got harder, I made sure to allocate more time towards the class to understand the notes, videos, and lecture slides. When I came across questions, I made sure to ask them right away to prevent any doubts from lingering. I also am proud with how much I learned over this quarter and how I was able to still have fun with my assignments especially through making the quarto files have a theme I liked and incorporating different colors and styles to make the file look more appealing.
 
 \

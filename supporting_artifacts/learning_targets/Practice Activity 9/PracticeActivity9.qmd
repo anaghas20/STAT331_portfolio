@@ -1,6 +1,8 @@
 ---
-title: "PracticeActivity9"
-format: html
+title: "Practice Activity 9"
+format: 
+  html:
+    self-contained: true
 editor: visual
 ---
 
@@ -12,7 +14,10 @@ library(here)
 
 ```{r}
 #| message: false
-mystery_animal <- read_csv(here::here("supporting_artifacts", "learning_targets",'Practice Activity 9', 'mystery_animal.csv'))
+mystery_animal <- read_csv(here::here("supporting_artifacts", 
+                                      "learning_targets",
+                                      'Practice Activity 9', 
+                                      'mystery_animal.csv'))
 ```
 
 ```{r}

@@ -6,6 +6,7 @@ format:
   html:
     monobackgroundcolor: lavender
     code-fold: true
+    self-contained: true
 editor: visual
 execute: 
   echo: true
@@ -29,6 +30,7 @@ You are permitted and encouraged to work with your teammates as you complete the
 In the code chunk below load in the packages necessary for your analysis. You should only need the tidyverse and here packages for this analysis, unless you decide to use additional resources.
 
 ```{r setup}
+#| message: false
 library(tidyverse)
 library(ggridges)
 library(here)
@@ -66,9 +68,9 @@ For this lab we will use the **`readr`** package (from the `tidyverse`) to read 
 **1. Using the `read_csv()` function and the here** package, to write the code necessary to load in the `surveys.csv` dataset. For simplicity, name the dataset `surveys`.
 
 ```{r data}
-#|message: false
+#| message: false
 # Code for question 1! 
-surveys <- read_csv(here::here("supporting_artifacts", "continued_learning", "Challenge 2", "surveys.csv"))
+surveys <- read_csv(here::here("supporting_artifacts", "learning_targets", "Challenge 2", "surveys.csv"))
 surveys
 ```
 

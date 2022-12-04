@@ -191,6 +191,7 @@ prop_CA <- avocado_CA |>
                names_to = 'proportion_sizes',
                values_to = 'mean_proportion')
 
+#plotting graph of proportion sizes
 prop_CA |>
   mutate(
     proportion_sizes = fct_recode(proportion_sizes, 
